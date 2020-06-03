@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
-import Recipes from './Recipes'
+import RecipeList from './RecipeList'
 import AddRecipe from './AddRecipe'
+import Recipe from './Recipe'
 import {BrowserRouter as Router, Route, Link, Switch} from 'react-router-dom';
 
 function GetRecipes(){
@@ -12,9 +13,11 @@ function App() {
 
   const deleteRecipe = index => {
     const newRecipes = [...recipes]
-    newRecipes.splice(index, 1)
+    localStorage.removeItem(newRecipes.splice(index, 1))
+    // newRecipes.splice(index, 1)
     setRecipes(newRecipes)
     localStorage.setItem('mySavedRecipes', JSON.stringify(newRecipes))
+    
   }
 
   const addRecipe = name => {
@@ -25,28 +28,23 @@ function App() {
 
   let items = [
     {name: "My Recipes", link:"/"},
-    {name: "Add Recipe", link:"/recipe"}
+    {name: "Add Recipe", link:"/addRecipe"},
+    {name: "Recipe", link:"/recipe"},
   ]
-
-  let tags = items.map((item, i) => {
-    return (
-      <li key={i}>
-        <Link to={item.link}>{item.name}</Link>
-      </li>
-    )
-  })
   
   return (
     <div className='todo-app container'>
       <Router>
         <Switch>
-          <Route path="/recipe">
-            <button><Link to={"/"}>Back</Link></button>
+          
+          <Route path='/addRecipe'>
+            {/* <button><Link to={'/'}>Back</Link></button> */}
             <AddRecipe addRecipe={addRecipe} />
           </Route>
-          <Route path="/">
-            <Recipes recipes={recipes} deleteRecipe={deleteRecipe}/>
-            <button><Link to={"/recipe"}>{"Add Recipe"}</Link></button>
+          <Route path='/:recipe' component={Recipe}/>
+          <Route path='/'>
+            <RecipeList recipes={recipes} deleteRecipe={deleteRecipe}/>
+            <button><Link to={"/addRecipe"}>{"Add Recipe"}</Link></button>
           </Route>
         </Switch>
       </Router>

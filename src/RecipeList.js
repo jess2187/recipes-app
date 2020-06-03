@@ -1,13 +1,14 @@
 import React from 'react';
+import {BrowserRouter as Router, Route, Link, Switch} from 'react-router-dom';
 
-const Recipes = ({recipes, deleteRecipe}) => {
+const RecipeList = ({recipes, deleteRecipe}) => {
  
     // checks if there are any todos (if empty)
     const recipeList = recipes.length ? (
         recipes.map((recipe, index) => {
            return (
                 <div className= 'collection-item' key={index}>
-                    <span>{recipe.name}</span>
+                    <button><Link to={'/'+recipe.name}>{recipe.name}</Link></button>
                     <button onClick={() => deleteRecipe(index)}> Delete </button>
                 </div>
            )
@@ -23,4 +24,4 @@ const Recipes = ({recipes, deleteRecipe}) => {
     )
 }
 
-export default Recipes
+export default RecipeList
