@@ -1,38 +1,172 @@
 .App {
+  
+}
+
+.Button {
+  background-color: white;
+  border-radius: 25px;
+  margin-left: 5px;
+  padding: 5px;
+}
+
+.ButtonLink {
+  color: gray;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+/* Home/My Recipes Page */
+.Recipe {
+  /* border: 5px; */
+  /* border-width: 1px;
+  border-color: white;
+  border-style: solid; */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0);
+}
+
+.RecipeList {
+  /* margin-top: 100px; */
+  padding: 50px;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.RecipeListItems {
+  text-align: center;
+  width: 50%;
+  display: inline-block;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.RecipeButton{
+  border: none;
+  /* justify-self: center; */
+  text-align: left;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.RecipeButtonLink {
+  text-decoration: none;
+  font-size: 20px;
+  color: black;
+  align-content: flex-start;
+  
 }
 
-.App-link {
-  color: #61dafb;
+.DeleteButton {
+  border-radius: 25px;
+  border: none;
+  padding: 5px;
+  color: gray;
+  text-decoration: none;
+  font-size: 16px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.AddRecipeButton {
+  background-color: white;
+  border-radius: 25px;
+  border: none;
+  margin-top: 10px;
+  padding: 10px;
+  color: gray;
+  text-decoration: none;
+}
+
+.AddRecipeButtonLink {
+  border-radius: 25px;
+  border: none;
+  /* margin-left: 5px; */
+  padding: 10px;
+  color: gray;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+
+
+/* View Recipe Page */
+.BackButton {
+  border-radius: 25px;
+  border: none;
+  padding: 10px;
+  /* font-size: 160px; */
+  /* text-decoration: none; 
+  color: gray; */
+}
+
+.BackButtonLink {
+  font-size: 20px;
+  text-decoration: none;
+  color: gray;
+}
+
+.ViewRecipe {
+  text-align: center;
+}
+
+.ViewRecipe h1 {
+  /* margin: 0 20px; */
+  /* padding: 0 50px; */
+  width: 70%;
+  text-align: center;
+  display: inline-block;
+}
+
+.RecipeContents {
+  text-align: center;
+  width: 50%;
+  display: inline-block;
+}
+
+.RecipeContents h2 {
+  text-align: left;
+}
+
+.RecipeContents p {
+  text-align: left;
+  font-size: 20px;
+}
+
+
+/* Add Recipe */
+.AddRecipe {
+  text-align: center;
+}
+
+.AddRecipeForm {
+  text-align: center;
+  width: 50%;
+  display: inline-block;
+}
+
+.AddRecipeForm form {
+  text-align: left;
+}
+
+.AddRecipeForm input {
+  width: 100%;
+  border: none;
+  outline: none;
+  padding: 12px 20px;
+  border-bottom: 1px solid gray;
+  font-size: 20px;
+}
+
+.AddRecipeSaveButton {
+  text-align: center;
+  border-radius: 25px;
+  border: none;
+  outline: none;
+  padding: 10px 15px;
+  margin: 15px;
+  background-color: white;
+}
+
+.AddRecipeSaveButtonLink {
+  font-size: 20px;
+  text-decoration: none;
+  color: gray;
 }

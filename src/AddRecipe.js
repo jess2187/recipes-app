@@ -1,4 +1,4 @@
-import React, {useState, useReducer, useRef, useEffect}  from 'react';
+import React, {useReducer}  from 'react';
 import {BrowserRouter as Router, Route, Link, Switch} from 'react-router-dom';
 
 
@@ -33,28 +33,36 @@ function User({addRecipe}) {
 
   return (
     <div>
-    <button><Link to={'/'}>Back</Link></button>
-    <form>
-      <input 
-        name= 'name'
-        value={name}
-        placeholder= 'Name of recipe'
-        onChange={onChange}
-      />
-      <input 
-        name= 'ingredients'
-        value={ingredients}
-        placeholder= 'Ingredients'
-        onChange={onChange}
-      />
-      <input 
-        name= 'steps'
-        value={steps}
-        placeholder= 'Steps'
-        onChange={onChange}
-      />
-      <button type="submit" value="Submit" onClick={handleSubmit}><Link to={"/"}>Save</Link></button>
-    </form>  
+      <button className='BackButton'><Link className='BackButtonLink' to={'/'}>Back</Link></button>
+      <div className='AddRecipe'>
+        <h1>Add Recipe!</h1>
+        <div className='AddRecipeForm'>
+          <form>
+            <h2>Name</h2>
+            <input 
+              name= 'name'
+              value={name}
+              placeholder= 'Add the name here...'
+              onChange={onChange}
+            />
+            <h2>Ingredients</h2>
+            <input 
+              name= 'ingredients'
+              value={ingredients}
+              placeholder= 'Add ingredients here...'
+              onChange={onChange}
+            />
+            <h2>Steps</h2>
+            <input 
+              name= 'steps'
+              value={steps}
+              placeholder= 'Add steps here...'
+              onChange={onChange}
+            />
+          </form>  
+          <button className='AddRecipeSaveButton' onClick={handleSubmit}><Link className='AddRecipeSaveButtonLink' to={"/"}>Add Recipe</Link></button>
+        </div>
+      </div>
     </div>
   )
 }

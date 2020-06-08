@@ -1,20 +1,17 @@
 import React, {useState} from 'react'
 import RecipeList from './RecipeList'
 import AddRecipe from './AddRecipe'
-import Recipe from './Recipe'
-import {BrowserRouter as Router, Route, Link, Switch} from 'react-router-dom';
-
-function GetRecipes(){
- return JSON.parse(localStorage.getItem('mySavedRecipes')) || [] 
-}
+import ViewRecipe from './ViewRecipe'
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import './App.css'
 
 function App() {
   const [recipes, setRecipes] = useState(JSON.parse(localStorage.getItem('mySavedRecipes')) || []) 
 
   const deleteRecipe = index => {
     const newRecipes = [...recipes]
-    localStorage.removeItem(newRecipes.splice(index, 1))
-    // newRecipes.splice(index, 1)
+    localStorage.removeItem(newRecipes[index])
+    newRecipes.splice(index, 1)
     setRecipes(newRecipes)
     localStorage.setItem('mySavedRecipes', JSON.stringify(newRecipes))
     
@@ -26,25 +23,23 @@ function App() {
     localStorage.setItem('mySavedRecipes', JSON.stringify(newRecipes))
   }
 
-  let items = [
-    {name: "My Recipes", link:"/"},
-    {name: "Add Recipe", link:"/addRecipe"},
-    {name: "Recipe", link:"/recipe"},
-  ]
+  // let items = [
+  //   {name: "My Recipes", link:"/"},
+  //   {name: "Add Recipe", link:"/addRecipe"},
+  //   {name: "ViewRecipe", link:"/viewrecipe"},
+  // ]
   
   return (
-    <div className='todo-app container'>
+    <div className='App'>
       <Router>
         <Switch>
           
           <Route path='/addRecipe'>
-            {/* <button><Link to={'/'}>Back</Link></button> */}
             <AddRecipe addRecipe={addRecipe} />
           </Route>
-          <Route path='/:recipe' component={Recipe}/>
+          <Route path='/:recipe' component={ViewRecipe}/>
           <Route path='/'>
             <RecipeList recipes={recipes} deleteRecipe={deleteRecipe}/>
-            <button><Link to={"/addRecipe"}>{"Add Recipe"}</Link></button>
           </Route>
         </Switch>
       </Router>

@@ -7,9 +7,9 @@ const RecipeList = ({recipes, deleteRecipe}) => {
     const recipeList = recipes.length ? (
         recipes.map((recipe, index) => {
            return (
-                <div className= 'collection-item' key={index}>
-                    <button><Link to={'/'+recipe.name}>{recipe.name}</Link></button>
-                    <button onClick={() => deleteRecipe(index)}> Delete </button>
+                <div className='Recipe' key={index}>
+                    <button className='RecipeButton'><Link className='RecipeButtonLink' to={'/'+recipe.name}>{recipe.name}</Link></button>
+                    <button className='DeleteButton'onClick={() => deleteRecipe(index)}> Delete </button>
                 </div>
            )
        }) 
@@ -17,9 +17,13 @@ const RecipeList = ({recipes, deleteRecipe}) => {
         <p className='center'> You have no recipes left </p>
     )
     return (
-        <div className='todos collection'>
-            <h1 className='center blue-text'>My Recipes</h1>
-            {recipeList}
+        <div className='RecipeList'>
+            <h1>Recipe List</h1>
+            <div className='RecipeListItems'>
+                {recipeList}
+            </div>
+            <br/>
+            <button className='AddRecipeButton'><Link className='AddRecipeButtonLink' to={"/addRecipe"}>{"Add Recipe"}</Link></button>
         </div>
     )
 }
