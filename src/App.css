@@ -130,6 +130,11 @@
   font-size: 20px;
 }
 
+.RecipeContents li {
+  text-align: left;
+  font-size: 20px;
+}
+
 
 /* Add Recipe */
 .AddRecipe {
@@ -146,7 +151,7 @@
   text-align: left;
 }
 
-.AddRecipeForm input {
+.AddRecipeForm input[type='text'] {
   width: 100%;
   border: none;
   outline: none;
