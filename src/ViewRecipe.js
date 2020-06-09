@@ -22,7 +22,7 @@ function ViewRecipe ({match}){
 
   return (
     <div>
-      <button className='BackButton'><Link className='BackButtonLink' to={'/'}>Back</Link></button>
+      <button className='Button'><Link className='ButtonLink' to={'/'}>Back</Link></button>
       <div className='ViewRecipe'>
         <h1>{data.name}</h1>
         <div className='RecipeContents'>

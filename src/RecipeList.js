@@ -23,7 +23,7 @@ const RecipeList = ({recipes, deleteRecipe}) => {
                 {recipeList}
             </div>
             <br/>
-            <button className='AddRecipeButton'><Link className='AddRecipeButtonLink' to={"/addRecipe"}>{"Add Recipe"}</Link></button>
+            <button className='Button'><Link className='ButtonLink' to={"/addRecipe"}>{"Add Recipe"}</Link></button>
         </div>
     )
 }

@@ -60,7 +60,7 @@ function User({addRecipe}) {
 
   return (
     <div>
-      <button className='BackButton'><Link className='BackButtonLink' to={'/'}>Back</Link></button>
+      
       <div className='AddRecipe'>
         <h1>Add Recipe!</h1>
         <div className='AddRecipeForm'>
@@ -86,7 +86,7 @@ function User({addRecipe}) {
                       name={ingredientId}
                       data-idx={idx}
                       id={ingredientId}
-                      placeholder= 'Add ingredients here...'
+                      placeholder= 'Add an ingredient here...'
                       className='ingredient'
                       value={ingredientState[idx].ingredient}
                       onChange={handleIngredientChange}
@@ -95,7 +95,7 @@ function User({addRecipe}) {
                 );      
               })
             }
-            <input type="button" value="Add Ingredient" onClick={addIngredient}/>
+            <input type="button" value="+" onClick={addIngredient}/>
 
             <h2>Steps</h2>
             {
@@ -109,7 +109,7 @@ function User({addRecipe}) {
                       name={stepId}
                       data-idx={idx}
                       id={stepId}
-                      placeholder= 'Add step here...'
+                      placeholder= 'Add a step here...'
                       className='step'
                       value={stepState[idx].step}
                       onChange={handleStepChange}
@@ -118,9 +118,10 @@ function User({addRecipe}) {
                 );      
               })
             }
-            <input type="button" value="Add Step"  onClick={addStep}/>
+            <input type="button" value="+"  onClick={addStep}/>
           </form>  
-          <button className='AddRecipeSaveButton' onClick={handleSubmit}><Link className='AddRecipeSaveButtonLink' to={"/"}>Add Recipe</Link></button>
+          <button className='Button'><Link className='ButtonLink' to={'/'}>Cancel</Link></button>
+          <button className='Button' onClick={handleSubmit}><Link className='ButtonLink' to={"/"}>Add</Link></button>
         </div>
       </div>
     </div>

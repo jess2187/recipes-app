@@ -2,19 +2,6 @@
   
 }
 
-.Button {
-  background-color: white;
-  border-radius: 25px;
-  margin-left: 5px;
-  padding: 5px;
-}
-
-.ButtonLink {
-  color: gray;
-  text-decoration: none;
-  font-size: 16px;
-}
-
 /* Home/My Recipes Page */
 .Recipe {
   /* border: 5px; */
@@ -66,13 +53,14 @@
 }
 
 .AddRecipeButton {
-  background-color: white;
+  background-color: rgb(24, 102, 95);
   border-radius: 25px;
   border: none;
   margin-top: 10px;
   padding: 10px;
   color: gray;
   text-decoration: none;
+  margin: 5px;
 }
 
 .AddRecipeButtonLink {
@@ -80,11 +68,10 @@
   border: none;
   /* margin-left: 5px; */
   padding: 10px;
-  color: gray;
+  color: white;
   text-decoration: none;
   font-size: 17px;
 }
-
 
 
 /* View Recipe Page */
@@ -95,12 +82,14 @@
   /* font-size: 160px; */
   /* text-decoration: none; 
   color: gray; */
+  background-color: rgb(24, 102, 95);
+  margin: 15px;
 }
 
 .BackButtonLink {
   font-size: 20px;
   text-decoration: none;
-  color: gray;
+  color: white;
 }
 
 .ViewRecipe {
@@ -151,27 +140,65 @@
   text-align: left;
 }
 
+.AddRecipeForm h2 {
+  padding-top: 10px;
+}
+
 .AddRecipeForm input[type='text'] {
   width: 100%;
   border: none;
   outline: none;
-  padding: 12px 20px;
-  border-bottom: 1px solid gray;
+  padding: 12px 20px 6px 20px;
+  border-bottom: 1px solid rgb(24, 102, 95);
   font-size: 20px;
+  margin-bottom: 10px;
 }
 
-.AddRecipeSaveButton {
+.AddRecipeForm input[type='button'] {
+  text-align: center;
+  border-radius: 30px;
+  border: none;
+  outline: none;
+  padding: 5px 10px;
+  margin: 15px;
+  background-color: rgb(24, 102, 95);
+  font-size: 15px;
+  text-decoration: none;
+  color: white;
+}
+
+/* .AddRecipeSaveButton {
   text-align: center;
   border-radius: 25px;
   border: none;
   outline: none;
   padding: 10px 15px;
   margin: 15px;
-  background-color: white;
+  background-color: rgb(24, 102, 95);
 }
 
 .AddRecipeSaveButtonLink {
   font-size: 20px;
   text-decoration: none;
-  color: gray;
+  color: white;
+} */
+
+
+.Button{
+  text-align: center;
+  border-radius: 25px;
+  border: none;
+  outline: none;
+  padding: 10px 15px;
+  margin: 15px;
+  background-color: rgb(24, 102, 95);
+  font-size: 20px;
+  text-decoration: none;
+  color: white;
+}
+
+.ButtonLink {
+  font-size: 20px;
+  text-decoration: none;
+  color: white;
 }
