@@ -1,20 +1,21 @@
 import React, {useState} from 'react'
 import RecipeList from './RecipeList'
-import AddRecipe from './AddRecipe'
-import ViewRecipe from './ViewRecipe'
-import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import RecipeCreator from './RecipeCreator'
+import RecipeView from './RecipeView'
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 import './App.css'
 
 function App() {
   const [recipes, setRecipes] = useState(JSON.parse(localStorage.getItem('mySavedRecipes')) || []) 
 
+  // TODO: need to remove item from database
+  //       Something like: `localStorage.removeItem(newRecipes[index])`
+  //       (doesn't work though)
   const deleteRecipe = index => {
     const newRecipes = [...recipes]
-    localStorage.removeItem(newRecipes[index])
     newRecipes.splice(index, 1)
     setRecipes(newRecipes)
     localStorage.setItem('mySavedRecipes', JSON.stringify(newRecipes))
-    
   }
 
   const addRecipe = name => {
@@ -23,21 +24,14 @@ function App() {
     localStorage.setItem('mySavedRecipes', JSON.stringify(newRecipes))
   }
 
-  // let items = [
-  //   {name: "My Recipes", link:"/"},
-  //   {name: "Add Recipe", link:"/addRecipe"},
-  //   {name: "ViewRecipe", link:"/viewrecipe"},
-  // ]
-  
   return (
     <div className='App'>
       <Router>
         <Switch>
-          
-          <Route path='/addRecipe'>
-            <AddRecipe addRecipe={addRecipe} />
+          <Route path='/new'>
+            <RecipeCreator addRecipe={addRecipe} />
           </Route>
-          <Route path='/:recipe' component={ViewRecipe}/>
+          <Route path='/recipes/:recipe' component={RecipeView}/>
           <Route path='/'>
             <RecipeList recipes={recipes} deleteRecipe={deleteRecipe}/>
           </Route>

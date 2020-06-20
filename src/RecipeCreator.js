@@ -1,6 +1,5 @@
-import React, {useReducer, useState}  from 'react';
-import {BrowserRouter as Router, Route, Link, Switch} from 'react-router-dom';
-
+import React, {useReducer, useState}  from 'react'
+import {Link} from 'react-router-dom'
 
 const initialState = {
   name: '',
@@ -15,7 +14,7 @@ function reducer(state, {field, value}) {
   }
 }
 
-function User({addRecipe}) {
+function RecipeCreator({addRecipe}) {
   const [state, dispatch] = useReducer(reducer, initialState)
   
   const blankIngredient = ''
@@ -31,7 +30,6 @@ function User({addRecipe}) {
   const addStep = () => {
     setStepState([...stepState, {...blankStep}]);
   }
-
 
   const onChange = (e) => {
     dispatch({field: e.target.name, value: e.target.value})
@@ -60,29 +58,28 @@ function User({addRecipe}) {
 
   return (
     <div>
-      
       <div className='AddRecipe'>
         <h1>Add Recipe!</h1>
         <div className='AddRecipeForm'>
           <form>
             <h2>Name</h2>
             <input 
-              name= 'name'
+              name='name'
               type='text'
               value={name}
-              placeholder= 'Add the name here...'
+              placeholder='Add the name here...'
               onChange={onChange}
             />
-
+            
             <h2>Ingredients</h2>
             {
               ingredientState.map((val, idx) => {
-                const ingredientId = `ingredient-${idx}`;
+                const ingredientId = `ingredient-${idx}`
                 return (
                   <div key={`ingredient-${idx}`}>
                     <label htmlFor={ingredientId}>{`Ingredient #${idx + 1}`}</label>
                     <input
-                      type="text"
+                      type='text'
                       name={ingredientId}
                       data-idx={idx}
                       id={ingredientId}
@@ -95,7 +92,7 @@ function User({addRecipe}) {
                 );      
               })
             }
-            <input type="button" value="+" onClick={addIngredient}/>
+            <input type='button' value='+' onClick={addIngredient}/>
 
             <h2>Steps</h2>
             {
@@ -105,7 +102,7 @@ function User({addRecipe}) {
                   <div key={`step-${idx}`}>
                     <label htmlFor={stepId}>{`Step #${idx + 1}`}</label>
                     <input
-                      type="text"
+                      type='text'
                       name={stepId}
                       data-idx={idx}
                       id={stepId}
@@ -118,14 +115,18 @@ function User({addRecipe}) {
                 );      
               })
             }
-            <input type="button" value="+"  onClick={addStep}/>
+            <input type='button' value='+'  onClick={addStep}/>
           </form>  
-          <button className='Button'><Link className='ButtonLink' to={'/'}>Cancel</Link></button>
-          <button className='Button' onClick={handleSubmit}><Link className='ButtonLink' to={"/"}>Add</Link></button>
+          <button className='Button'>
+            <Link className='ButtonLink' to='/'>Cancel</Link>
+          </button>
+          <button className='Button' onClick={handleSubmit}>
+            <Link className='ButtonLink' to='/'>Add</Link>
+          </button>
         </div>
       </div>
     </div>
   )
 }
 
-export default User
+export default RecipeCreator

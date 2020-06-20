@@ -31,6 +31,7 @@
 
 .RecipeButton{
   border: none;
+  background-color: white;
   /* justify-self: center; */
   text-align: left;
 }
@@ -49,6 +50,7 @@
   padding: 5px;
   color: gray;
   text-decoration: none;
+  background-color: white;
   font-size: 16px;
 }
 
@@ -201,4 +203,14 @@
   font-size: 20px;
   text-decoration: none;
   color: white;
+}
+
+@media only screen and (max-width: 450px) {
+  .RecipeListItems {
+    width: 85%;
+  }
+
+  .AddRecipeForm {
+    width: 65%;
+  }
 }
