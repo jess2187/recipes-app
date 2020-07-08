@@ -1,4 +1,5 @@
 import React, {useReducer, useState}  from 'react'
+import {createRecipe} from './api'
 import {Link} from 'react-router-dom'
 
 const initialState = {
@@ -16,12 +17,14 @@ function reducer(state, {field, value}) {
 
 function RecipeCreator({addRecipe}) {
   const [state, dispatch] = useReducer(reducer, initialState)
-  
+  const {name, ingredients, steps} = state
+
+
   const blankIngredient = ''
-  const [ingredientState, setIngredientState] = useState([{...blankIngredient}])
+  const [ingredientState, setIngredientState] = useState([...blankIngredient])
   
   const addIngredient = () => {
-    setIngredientState([...ingredientState, {...blankIngredient}]);
+    setIngredientState([...ingredientState, ...blankIngredient]);
   }
 
   const blankStep = ''
@@ -37,7 +40,9 @@ function RecipeCreator({addRecipe}) {
 
   const handleIngredientChange = (e) => {
     const updatedIngredients = [...ingredientState];
-    updatedIngredients[e.target.dataset.idx][e.target.className] = e.target.value;
+    console.log(e.target.value)
+    updatedIngredients.splice(idx, 0, e.target.value)
+    // updatedIngredients[e.target.dataset.idx] = e.target.value;
     setIngredientState(updatedIngredients);
   }
 
@@ -47,12 +52,13 @@ function RecipeCreator({addRecipe}) {
     setStepState(updatedSteps);
   }
 
-  const {name, ingredients, steps} = state
-  
   const handleSubmit = e => {
     e.preventDefault()
     if (!name || !ingredients || !steps) return
     addRecipe(name)
+    let recipe = {author: 'jessica', name, steps: stepState, ingredients: ingredientState, tags:'dinner'}
+    createRecipe(recipe)
+
     localStorage.setItem(name, JSON.stringify({'name': name, 'ingredients': ingredientState, 'steps': stepState}))
   } 
 

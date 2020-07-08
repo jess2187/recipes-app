@@ -17,13 +17,13 @@
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0);
 }
 
-.RecipeList {
+.RecipeBook {
   /* margin-top: 100px; */
   padding: 50px;
   text-align: center;
 }
 
-.RecipeListItems {
+.RecipeBookItems {
   text-align: center;
   width: 50%;
   display: inline-block;

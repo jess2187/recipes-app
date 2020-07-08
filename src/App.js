@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import RecipeList from './RecipeList'
+import RecipeBook from './RecipeBook'
 import RecipeCreator from './RecipeCreator'
 import RecipeView from './RecipeView'
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
@@ -24,6 +24,8 @@ function App() {
     localStorage.setItem('mySavedRecipes', JSON.stringify(newRecipes))
   }
 
+  // const recipes = useSelector(state => state.recipes)
+
   return (
     <div className='App'>
       <Router>
@@ -31,9 +33,9 @@ function App() {
           <Route path='/new'>
             <RecipeCreator addRecipe={addRecipe} />
           </Route>
-          <Route path='/recipes/:recipe' component={RecipeView}/>
+          <Route path='/recipes/:id/:name' component={RecipeView}/>
           <Route path='/'>
-            <RecipeList recipes={recipes} deleteRecipe={deleteRecipe}/>
+            <RecipeBook recipes={recipes} deleteRecipe={deleteRecipe}/>
           </Route>
         </Switch>
       </Router>

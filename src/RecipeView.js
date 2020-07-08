@@ -1,5 +1,6 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import {Link} from 'react-router-dom'
+import {fetchRecipe} from './api'
 import './App.css'
 
 /**
@@ -8,11 +9,11 @@ import './App.css'
  * elements: array of objects
  * elementKey: property to render from elements
  */
-const ContentList = ({elements, elementKey}) => (
+const ContentList = ({elements}) => (
   <div>
     {
       elements.map((element) => (
-        <li key={element[elementKey].toString()}>{element[elementKey]}</li>
+        <li key={element.toString()}>{element}</li>
       ))
     }
   </div>
@@ -24,21 +25,34 @@ const ContentList = ({elements, elementKey}) => (
  * match: injected by react router, url tells us which recipe to render
  */
 function RecipeView ({match}) {
-  let recipe = JSON.parse(localStorage.getItem(match.params.recipe))
+  let recipe = 'test'
+  let id = match.params.id
+  console.log(id)
+  const [data, setData] = useState(undefined)
 
+  useEffect(() => {
+    async function fetchData(){
+      const response = await fetchRecipe(id)
+      setData(response)
+    }
+    fetchData()
+    
+  }, [id])
+
+  console.log(data)
   return (
     <div>
       <button className='Button'><Link className='ButtonLink' to={'/'}>Back</Link></button>
       <div className='ViewRecipe'>
-        <h1>{recipe.name}</h1>
+        <h1>{data ? data.name : 'loading'}</h1>
         <div className='RecipeContents'>
           <h2>Ingredients</h2>
           <ul>
-            <ContentList elements={recipe.ingredients} elementKey={'ingredient'} />
+            <ContentList elements={data ? data.ingredients : []} elementKey={'ingredient'} />
           </ul>
           <h2>Steps</h2>
           <ol>
-            <ContentList elements={recipe.steps} elementKey={'step'} />
+            <ContentList elements={data ? data.steps : []} elementKey={'step'} />
           </ol>
         </div>
       </div>
